@@ -199,20 +199,20 @@
     <div class="g20"></div>
     <div class="card">
       <div class="rule"><span class="ic">👆</span><span>Tape l'écran pour faire voler ton ongle</span></div>
-      <div class="rule"><span class="ic">💅</span><span>Esquive les pinceaux sans te faire toucher</span></div>
+      <div class="rule"><span class="ic">🎨</span><span>Esquive les pinceaux sans te faire toucher</span></div>
       <div class="rule"><span class="ic">🏆</span><span>Rejoins le classement après chaque run</span></div>
       <div class="rule"><span class="ic">🎁</span><span>Top 3 = bon de réduction Janne sans e !</span></div>
     </div>
     <div class="g16"></div>
-    <div class="section-label">Les 3 meilleures gagnent</div>
+    <div class="section-label">Les 3 meilleur·es gagnent</div>
     <div class="g8"></div>
     <div class="prizes">
-      <div class="prize"><div class="em">🥇</div><div class="pc">-50%</div><div class="pos">1ère</div></div>
-      <div class="prize"><div class="em">🥈</div><div class="pc">-35%</div><div class="pos">2ème</div></div>
-      <div class="prize"><div class="em">🥉</div><div class="pc">-20%</div><div class="pos">3ème</div></div>
+      <div class="prize"><div class="em">🥇</div><div class="pc">-50%</div><div class="pos">1er·ère</div></div>
+      <div class="prize"><div class="em">🥈</div><div class="pc">-35%</div><div class="pos">2e</div></div>
+      <div class="prize"><div class="em">🥉</div><div class="pc">-20%</div><div class="pos">3e</div></div>
     </div>
     <div class="g24"></div>
-    <button class="btn btn-p" onclick="dismissIntro()">C'est parti ! 💅</button>
+    <button class="btn btn-p" onclick="dismissIntro()">C'est parti !</button>
   </div>
 
   <!-- ══════════════ MENU ══════════════ -->
@@ -222,22 +222,22 @@
     <div class="g12"></div>
     <div id="menu-wb" class="tag" style="display:none;"></div>
     <div class="g16"></div>
-    <button class="btn btn-p" onclick="startGame()" style="max-width:260px;">Jouer 💅</button>
+    <button class="btn btn-p" onclick="startGame()" style="max-width:260px;">Jouer</button>
     <div class="g8"></div>
     <button class="btn btn-s" onclick="openLeaderboard()" style="max-width:260px;">Voir le classement 🏆</button>
     <div class="g20"></div>
     <div class="section-label">Gagner un bon de réduction</div>
     <div class="g8"></div>
     <div class="prizes">
-      <div class="prize"><div class="em">🥇</div><div class="pc">-50%</div><div class="pos">1ère</div></div>
-      <div class="prize"><div class="em">🥈</div><div class="pc">-35%</div><div class="pos">2ème</div></div>
-      <div class="prize"><div class="em">🥉</div><div class="pc">-20%</div><div class="pos">3ème</div></div>
+      <div class="prize"><div class="em">🥇</div><div class="pc">-50%</div><div class="pos">1er·ère</div></div>
+      <div class="prize"><div class="em">🥈</div><div class="pc">-35%</div><div class="pos">2e</div></div>
+      <div class="prize"><div class="em">🥉</div><div class="pc">-20%</div><div class="pos">3e</div></div>
     </div>
   </div>
 
   <!-- ══════════════ GAME OVER ══════════════ -->
   <div id="s-go" class="scr">
-    <div style="font-size:38px;font-weight:800;color:var(--bx);text-align:center;">Aïe ! 💔</div>
+    <div id="go-title" style="font-size:38px;font-weight:800;color:var(--bx);text-align:center;">Aïe ! 💔</div>
     <div class="g8"></div>
     <div class="score-lbl">Ton score</div>
     <div class="score-big" id="go-sc">0</div>
@@ -260,7 +260,7 @@
 
     <!-- New user -->
     <div id="go-new" style="display:none;width:100%;align-items:center;flex-direction:column;">
-      <button class="btn btn-p" onclick="openSave()">Rejoindre le classement 💅</button>
+      <button class="btn btn-p" onclick="openSave()">Rejoindre le classement</button>
       <div class="g8"></div>
       <button class="btn btn-s" onclick="startGame()">Rejouer</button>
       <div class="g8"></div>
@@ -279,15 +279,15 @@
       <div id="err-ps" class="ferr"></div>
     </div>
     <div class="fgroup">
-      <label class="flabel">Ton email</label>
+      <label class="flabel">Ton mail</label>
       <input id="inp-em" type="email" class="finput" placeholder="marie@exemple.fr">
       <div id="err-em" class="ferr"></div>
     </div>
     <div class="cbrow">
       <input type="checkbox" id="inp-opt">
-      <label for="inp-opt">Je veux recevoir les offres et actus Janne sans e 💌<br><span style="color:#bbb;">Aucun spam. Désinscription en 1 clic.</span></label>
+      <label for="inp-opt">Je veux être parmi les premier·es au courant des inspis, concours, promos fidélité et nouveautés !<br><span style="color:#bbb;">Aucun spam. Désinscription en 1 clic.</span></label>
     </div>
-    <button class="btn btn-p" id="btn-sub" onclick="submitScore()">Sauvegarder 💅</button>
+    <button class="btn btn-p" id="btn-sub" onclick="submitScore()">Sauvegarder</button>
     <div class="g8"></div>
     <button class="btn btn-g" onclick="show('s-go')">Retour</button>
     <div class="g8"></div>
@@ -311,16 +311,15 @@
 
   <!-- ══════════════ LEADERBOARD ══════════════ -->
   <div id="s-lb" class="scr">
-    <div style="font-size:22px;font-weight:800;color:var(--bx);">Hall of Fame 💅</div>
-    <div class="sub">Top 10 des meilleures nailistas</div>
+    <div style="font-size:22px;font-weight:800;color:var(--bx);">Hall of Fame</div>
     <div class="g16"></div>
     <div class="scrollbox">
       <div id="lb-rows"><div class="loading">Chargement...</div></div>
     </div>
     <div class="g8"></div>
-    <div class="fn">🎁 Top 3 du classement = bon de réduction offert par Janne</div>
+    <div class="fn">🎁 Top 3 du classement = bon de réduction</div>
     <div class="g16"></div>
-    <button class="btn btn-p" onclick="startGame()" style="max-width:260px;">Jouer 💅</button>
+    <button class="btn btn-p" onclick="startGame()" style="max-width:260px;">Jouer</button>
     <div class="g8"></div>
     <button class="btn btn-g" onclick="show('s-menu')">Retour</button>
   </div>
@@ -420,7 +419,7 @@ async function saveScore(pseudo, email, score, optin) {
 }
 
 function rankLabel(i) {
-  return i===0?'🥇 1ère':i===1?'🥈 2ème':i===2?'🥉 3ème':(i+1)+'ème';
+  return i===0?'🥇 1er·ère':i===1?'🥈 2e':i===2?'🥉 3e':(i+1)+'e';
 }
 function rankClass(i) {
   return i===0?'lbr r1':i===1?'lbr r2':i===2?'lbr r3':'lbr';
@@ -438,10 +437,13 @@ async function openGameover() {
 
   document.getElementById('go-sc').textContent = pendingScore;
 
-  // Show previous best or flag a new record — never the same number as current score
-  const best  = geti(LS.BEST);
+  const best    = geti(LS.BEST);
+  const isNewPB = prevBest > 0 && best > prevBest;
+
+  document.getElementById('go-title').textContent = isNewPB ? 'Record battu 🏆' : 'Aïe ! 💔';
+
   const recEl = document.getElementById('go-rec');
-  if (prevBest > 0 && best > prevBest) {
+  if (isNewPB) {
     document.getElementById('go-rec-lbl').textContent = '🏆 Nouveau record ! ';
     document.getElementById('go-rec-val').textContent = best;
     recEl.style.display = 'block';
@@ -456,7 +458,7 @@ async function openGameover() {
   const lb = await fetchLB();
   const rankEl = document.getElementById('go-rank');
   if (lb.length === 0) {
-    rankEl.textContent = 'Tu serais la première du classement ! 👑';
+    rankEl.textContent = 'Tu serais premier·ère du classement ! 👑';
   } else {
     const pos = lb.filter(r => r.score > pendingScore).length + 1;
     if (pos <= 10 || lb.length < 10) {
@@ -472,7 +474,7 @@ async function openGameover() {
   if (ps && em) {
     goKnown.style.cssText = 'display:flex;flex-direction:column;align-items:center;width:100%;';
     goNew.style.display = 'none';
-    document.getElementById('go-wb-txt').textContent = '👋 ' + ps + ', prête à sauvegarder ?';
+    document.getElementById('go-wb-txt').textContent = '👋 ' + ps + ', prêt·e à sauvegarder ?';
     // Re-enable the button in case it was disabled from a previous save
     const btnK = document.getElementById('btn-save-known');
     if (btnK) { btnK.disabled = false; btnK.textContent = 'Sauvegarder mon score ✨'; }
@@ -571,7 +573,7 @@ async function openLeaderboard() {
   rows.innerHTML = '<div class="loading">Chargement...</div>';
   const lb = await fetchLB(true);
   if (!lb.length) {
-    rows.innerHTML = '<div class="loading">Pas encore de scores — sois la première ! 💅</div>';
+    rows.innerHTML = '<div class="loading">Pas encore de scores — sois premier·ère !</div>';
     return;
   }
   rows.innerHTML = lb.map((r,i) => `
@@ -596,11 +598,12 @@ const GRAV       = 0.52;   // was 0.40
 const JUMP_V     = -5.8;   // was -7.4 — half the arc height, much more maneuverable
 const PW         = 56;
 const GAP_START  = 188;
-const GAP_MIN    = 132;
+const GAP_MIN    = 115;   // was 132 — plus dur au max
 const SPD_START  = 2.0;
-const SPD_MAX    = 4.3;
-const RAMP_END   = 900;
-const PIPE_INT   = 90;
+const SPD_MAX    = 5.0;   // was 4.3 — vraiment dur à 30s
+const RAMP_START = 300;   // 5s de grâce avant que ça monte
+const RAMP_END   = 1500;  // 25s de montée → max à 30s total
+const PIPE_INT   = 115;   // was 90 — plus d'espace entre les tuyaux
 const GROUND_Y   = BH - 58;
 
 let gState = 'idle';
@@ -619,7 +622,7 @@ function sy(v) { return v * scale; }
 
 // ── DIFFICULTY RAMP ──
 function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
-function diffT()  { return ease(Math.min(1, Math.max(0, (frame-60)/RAMP_END))); }
+function diffT()  { return ease(Math.min(1, Math.max(0, (frame-RAMP_START)/RAMP_END))); }
 function pSpeed() { return SPD_START + (SPD_MAX - SPD_START) * diffT(); }
 function pGap()   { return GAP_START - (GAP_START - GAP_MIN) * diffT(); }
 
@@ -631,7 +634,7 @@ function resetGame() {
   resetBird();
   pipes         = [];
   frame         = 0;
-  nextPipeFrame = 60 + PIPE_INT; // first pipe spawns at frame 150
+  nextPipeFrame = 90 + PIPE_INT; // first pipe spawns at ~2.5s
   gameScore     = 0;
   particles     = [];
 }
