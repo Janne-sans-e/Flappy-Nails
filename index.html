@@ -275,23 +275,21 @@
     <div class="g20"></div>
     <div class="fgroup">
       <label class="flabel">Ton pseudo</label>
-      <input id="inp-ps" type="text" class="finput" placeholder="NailQueen 💅" maxlength="20">
+      <input id="inp-ps" type="text" class="finput" placeholder="pseudo" maxlength="20">
       <div id="err-ps" class="ferr"></div>
     </div>
     <div class="fgroup">
       <label class="flabel">Ton mail</label>
-      <input id="inp-em" type="email" class="finput" placeholder="marie@exemple.fr">
+      <input id="inp-em" type="email" class="finput" placeholder="mail@gmail.com">
       <div id="err-em" class="ferr"></div>
     </div>
     <div class="cbrow">
       <input type="checkbox" id="inp-opt">
-      <label for="inp-opt">Je veux être parmi les premier·es au courant des inspis, concours, promos fidélité et nouveautés !<br><span style="color:#bbb;">Aucun spam. Désinscription en 1 clic.</span></label>
+      <label for="inp-opt">Je veux être parmi les premier·es au courant des inspis, concours, promos fidélité et nouveautés !</label>
     </div>
     <button class="btn btn-p" id="btn-sub" onclick="submitScore()">Sauvegarder</button>
     <div class="g8"></div>
     <button class="btn btn-g" onclick="show('s-go')">Retour</button>
-    <div class="g8"></div>
-    <div class="fn">Données utilisées uniquement pour le classement · RGPD</div>
   </div>
 
   <!-- ══════════════ SAVED ══════════════ -->
@@ -440,7 +438,7 @@ async function openGameover() {
   const best    = geti(LS.BEST);
   const isNewPB = prevBest > 0 && best > prevBest;
 
-  document.getElementById('go-title').textContent = isNewPB ? 'Record battu 🏆' : 'Aïe ! 💔';
+  document.getElementById('go-title').textContent = isNewPB ? '🏆 Nouveau record' : 'Aïe ! 💔';
 
   const recEl = document.getElementById('go-rec');
   if (isNewPB) {
@@ -474,10 +472,16 @@ async function openGameover() {
   if (ps && em) {
     goKnown.style.cssText = 'display:flex;flex-direction:column;align-items:center;width:100%;';
     goNew.style.display = 'none';
-    document.getElementById('go-wb-txt').textContent = '👋 ' + ps + ', prêt·e à sauvegarder ?';
-    // Re-enable the button in case it was disabled from a previous save
     const btnK = document.getElementById('btn-save-known');
-    if (btnK) { btnK.disabled = false; btnK.textContent = 'Sauvegarder mon score ✨'; }
+    if (isNewPB) {
+      // Auto-save silently — player doesn't need to do anything
+      document.getElementById('go-wb-txt').textContent = '✨ Sauvegarde en cours...';
+      if (btnK) { btnK.disabled = true; btnK.style.display = 'none'; }
+      doSave(ps, em, pendingScore, false);
+    } else {
+      document.getElementById('go-wb-txt').textContent = '👋 ' + ps + ', prêt·e à sauvegarder ?';
+      if (btnK) { btnK.disabled = false; btnK.style.display = ''; btnK.textContent = 'Sauvegarder mon score ✨'; }
+    }
   } else {
     goKnown.style.display = 'none';
     goNew.style.cssText = 'display:flex;flex-direction:column;align-items:center;width:100%;';
@@ -603,7 +607,9 @@ const SPD_START  = 2.0;
 const SPD_MAX    = 5.0;   // was 4.3 — vraiment dur à 30s
 const RAMP_START = 300;   // 5s de grâce avant que ça monte
 const RAMP_END   = 1500;  // 25s de montée → max à 30s total
-const PIPE_INT   = 115;   // was 90 — plus d'espace entre les tuyaux
+const PIPE_INT_BASE = 115; // frames at start speed
+// Interval shrinks with difficulty so visual spacing stays reasonable as speed grows
+function pipeInterval() { return Math.round(PIPE_INT_BASE - 35 * diffT()); }
 const GROUND_Y   = BH - 58;
 
 let gState = 'idle';
@@ -634,7 +640,7 @@ function resetGame() {
   resetBird();
   pipes         = [];
   frame         = 0;
-  nextPipeFrame = 90 + PIPE_INT; // first pipe spawns at ~2.5s
+  nextPipeFrame = 90 + PIPE_INT_BASE; // first pipe spawns at ~2.5s
   gameScore     = 0;
   particles     = [];
 }
@@ -822,7 +828,7 @@ function updateGame(dt) {
 
   // Pipe spawn — threshold-based so floating-point frame never skips a beat
   if (frame >= nextPipeFrame) {
-    nextPipeFrame += PIPE_INT;
+    nextPipeFrame += pipeInterval();
     const minT = 55, maxT = GROUND_Y - pGap() - 55;
     const topH = Math.random()*(maxT-minT)+minT;
     pipes.push({ lx: BW+12, topH, gap: pGap(), scored: false });
