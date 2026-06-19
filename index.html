@@ -138,7 +138,7 @@
     <div class="card">
       <div class="rule"><span class="ic">⭐</span><span>Tape l'écran pour faire voler l'étoile</span></div>
       <div class="rule"><span class="ic">💅</span><span>Esquive les inspis des client·e</span></div>
-      <div class="rule"><span class="ic">🏆</span><span>Rejoins le classement</span></div>
+      <div class="rule"><span class="ic">📊</span><span>Rejoins le classement</span></div>
     </div>
     <div class="g16"></div>
     <div class="section-label">Les lots</div>
@@ -163,10 +163,10 @@
     <div class="g16"></div>
     <button class="btn btn-p" onclick="startGame()" style="max-width:260px;">▶ Jouer</button>
     <div class="g8"></div>
-    <button class="btn btn-s" onclick="openLeaderboard()" style="max-width:260px;">Classement 🏆</button>
+    <button class="btn btn-s" onclick="openLeaderboard()" style="max-width:260px;">Classement 📊</button>
     <div class="g8"></div>
     <div id="menu-stats-wrap" style="display:none;width:100%;max-width:260px;">
-      <button class="btn btn-g" onclick="openStats()" style="width:100%;max-width:260px;">Mes stats 📊</button>
+      <button class="btn btn-g" onclick="openStats()" style="width:100%;max-width:260px;">Mes stats 📈</button>
     </div>
     <div class="g20"></div>
     <div class="section-label">Les lots</div>
@@ -187,7 +187,7 @@
     <div class="score-lbl">Score</div>
     <div class="score-big" id="go-sc">0</div>
     <div class="g4"></div>
-    <div id="go-rec" style="font-size:11px;color:#9a5060;display:none;"><span id="go-rec-lbl">🏆 Record : </span><span id="go-rec-val">0</span> pts</div>
+    <div id="go-rec" style="font-size:11px;color:#9a5060;display:none;"><span id="go-rec-lbl">📈 Record : </span><span id="go-rec-val">0</span> pts</div>
     <div class="g8"></div>
     <div id="go-rank" style="font-size:12px;color:#9a5060;font-style:italic;text-align:center;max-width:280px;"></div>
     <div class="g8"></div>
@@ -197,15 +197,15 @@
     <div id="go-known" style="display:none;width:100%;align-items:center;flex-direction:column;">
       <button class="btn btn-p" onclick="startGame()">Rejouer</button>
       <div class="g8"></div>
-      <button class="btn btn-o" onclick="openLeaderboard()" style="max-width:260px;">Voir le classement 🏆</button>
+      <button class="btn btn-o" onclick="openLeaderboard()" style="max-width:260px;">Voir le classement 📊</button>
     </div>
     <button id="go-notme" class="btn btn-s btn-pill" onclick="notMe()" style="display:none;position:absolute;bottom:14px;left:14px;">Ce n'est pas moi</button>
     <div id="go-new" style="display:none;width:100%;align-items:center;flex-direction:column;">
-      <button class="btn btn-p" id="go-new-cta" onclick="openSave()" style="font-size:17px;padding:18px 24px;box-shadow:4px 4px 0 var(--bxd);">🏆 S'inscrire au classement</button>
+      <button class="btn btn-p" id="go-new-cta" onclick="openSave()" style="font-size:17px;padding:18px 24px;box-shadow:4px 4px 0 var(--bxd);">📊 S'inscrire au classement</button>
       <div class="g12"></div>
       <button class="btn btn-s" onclick="startGame()">Rejouer</button>
       <div class="g8"></div>
-      <button class="btn btn-o" onclick="openLeaderboard()" style="max-width:260px;">Voir le classement 🏆</button>
+      <button class="btn btn-o" onclick="openLeaderboard()" style="max-width:260px;">Voir le classement 📊</button>
     </div>
   </div>
 
@@ -230,7 +230,7 @@
     <div class="g8"></div>
     <div id="saved-rank" style="font-size:14px;color:#9a5060;font-weight:600;text-align:center;"></div>
     <div class="g24"></div>
-    <button class="btn btn-p" onclick="openLeaderboard()">Classement 🏆</button>
+    <button class="btn btn-p" onclick="openLeaderboard()">Classement 📊</button>
     <div class="g8"></div>
     <button class="btn btn-s" onclick="startGame()">Rejouer</button>
     <div class="g8"></div>
@@ -239,7 +239,7 @@
 
   <!-- STATS -->
   <div id="s-stats" class="scr">
-    <div style="font-family:'BrasikaDisplay',sans-serif;font-size:28px;color:var(--bx);">Mes stats 📊</div>
+    <div style="font-family:'BrasikaDisplay',sans-serif;font-size:28px;color:var(--bx);">Mes stats 📈</div>
     <div class="sub" id="stats-name"></div>
     <div class="g16"></div>
     <div id="stats-content"><div class="loading">Chargement...</div></div>
@@ -303,24 +303,24 @@ function setHighlight(idx0){
     const pc=['-50%','-35%','-20%'][idx0],med=['🥇','🥈','🥉'][idx0];
     hl.innerHTML=med+' '+pc+' de réduction si tu restes à cette position jusqu\'au 31 juin';
     hl.style.display='block';
-    if(cta) cta.innerHTML='🏆 S\'inscrire pour gagner '+pc;
+    if(cta) cta.innerHTML='📊 S\'inscrire pour gagner '+pc;
   }else if(idx0<0||idx0>=10){
     hl.textContent='🎲 Inscris-toi pour le tirage au sort -50% !';
     hl.style.display='block';
-    if(cta) cta.innerHTML='🏆 S\'inscrire au classement<br><span style="font-size:11px;font-weight:400;">et être éligible au tirage au sort</span>';
+    if(cta) cta.innerHTML='📊 S\'inscrire au classement<br><span style="font-size:11px;font-weight:400;">et être éligible au tirage au sort</span>';
   }else{
     hl.style.display='none';
-    if(cta) cta.innerHTML='🏆 S\'inscrire au classement<br><span style="font-size:11px;font-weight:400;">et être éligible au tirage au sort</span>';
+    if(cta) cta.innerHTML='📊 S\'inscrire au classement<br><span style="font-size:11px;font-weight:400;">et être éligible au tirage au sort</span>';
   }
 }
 async function openGameover(){
   pendingScore=gameScore; show('s-go');
   document.getElementById('go-sc').textContent=pendingScore;
   const best=geti(LS.BEST),isNewPB=prevBest>0&&best>prevBest;
-  document.getElementById('go-title').textContent=isNewPB?'🏆 Record !':'Aïe ! 💔';
+  document.getElementById('go-title').textContent=isNewPB?'📈 Record !':'Aïe ! 💔';
   const recEl=document.getElementById('go-rec');
-  if(isNewPB){document.getElementById('go-rec-lbl').textContent='🏆 Nouveau record ! ';document.getElementById('go-rec-val').textContent=best;recEl.style.display='block';}
-  else if(prevBest>0){document.getElementById('go-rec-lbl').textContent='🏆 Ton record : ';document.getElementById('go-rec-val').textContent=prevBest;recEl.style.display='block';}
+  if(isNewPB){document.getElementById('go-rec-lbl').textContent='📈 Nouveau record ! ';document.getElementById('go-rec-val').textContent=best;recEl.style.display='block';}
+  else if(prevBest>0){document.getElementById('go-rec-lbl').textContent='📈 Ton record : ';document.getElementById('go-rec-val').textContent=prevBest;recEl.style.display='block';}
   else recEl.style.display='none';
   await fetchLB();
   const rankEl=document.getElementById('go-rank'),knownEm=get(LS.EM);
