@@ -308,10 +308,10 @@ function setHighlight(idx0){
   }else if(idx0<0||idx0>=10){
     hl.textContent='🎲 Inscris-toi pour le tirage au sort -50% !';
     hl.style.display='block';
-    if(cta) cta.innerHTML='📊 Sauvegarder et être éligible au tirage au sort';
+    if(cta) cta.innerHTML='📊 Sauvegarder<br><span style="font-size:11px;font-weight:400;">et être éligible au tirage au sort</span>';
   }else{
     hl.style.display='none';
-    if(cta) cta.innerHTML='📊 Sauvegarder et être éligible au tirage au sort';
+    if(cta) cta.innerHTML='📊 Sauvegarder<br><span style="font-size:11px;font-weight:400;">et être éligible au tirage au sort</span>';
   }
 }
 
