@@ -137,7 +137,7 @@
     <div class="g20"></div>
     <div class="card">
       <div class="rule"><span class="ic">⭐</span><span>Tape l'écran pour faire voler l'étoile</span></div>
-      <div class="rule"><span class="ic">💅</span><span>Esquive les inspis des client·e</span></div>
+      <div class="rule"><span class="ic">💅</span><span>Passe entre les inspis des client·es</span></div>
       <div class="rule"><span class="ic">📊</span><span>Rejoins le classement</span></div>
     </div>
     <div class="g16"></div>
@@ -368,7 +368,7 @@ const canvas=document.getElementById('c'), ctx=canvas.getContext('2d');
 const BW=390, BH=660;
 const GRAV=0.52, JUMP_V=-7.0, PW=52;
 const GAP_START=188, GAP_MIN=148, SPD_START=2.0, SPD_MAX=5.0;
-const RAMP_START=300, RAMP_END=1500, PIPE_INT_BASE=180;
+const RAMP_START=300, RAMP_END=1500, PIPE_INT_BASE=180, PIPE_START_DELAY=150;
 const GROUND_Y=BH-58;
 let gState='idle', gameScore=0, bird, pipes, frame, nextPipeFrame, particles, scale;
 let idleF=0, trail=[], trailTimer=0;
@@ -381,7 +381,7 @@ function pSpeed(){ return SPD_START+(SPD_MAX-SPD_START)*diffT(); }
 function pGap(){ return GAP_START-(GAP_START-GAP_MIN)*diffT(); }
 function pipeInterval(){ return Math.round(PIPE_INT_BASE-35*diffT()); }
 function resetBird(){ bird={x:BW*0.28,y:BH*0.43,vy:0,rot:0}; }
-function resetGame(){ resetBird(); pipes=[]; frame=0; nextPipeFrame=90+PIPE_INT_BASE; gameScore=0; particles=[]; trail=[]; trailTimer=0; }
+function resetGame(){ resetBird(); pipes=[]; frame=0; nextPipeFrame=PIPE_START_DELAY; gameScore=0; particles=[]; trail=[]; trailTimer=0; }
 
 // ═══════════════════════════════════════════════════
 // BACKGROUND — MARSEILLE SKYLINE
@@ -1137,7 +1137,7 @@ function updateGame(dt){
   frame+=dt;
   if(frame>=nextPipeFrame){ nextPipeFrame+=pipeInterval(); const minT=55,maxT=GROUND_Y-pGap()-55,topH=Math.random()*(maxT-minT)+minT; pipes.push({lx:BW+12,topH,gap:pGap(),scored:false,design:Math.floor(Math.random()*NAIL_DESIGNS.length)}); }
   const spd=pSpeed(); pipes.forEach(p=>p.lx-=spd*dt); pipes=pipes.filter(p=>p.lx+PW>-20);
-  pipes.forEach(p=>{ if(!p.scored&&p.lx+PW<bird.x){p.scored=true;gameScore++;if(gameScore>geti(LS.BEST))set(LS.BEST,gameScore);spawnParticles(bird.x,bird.y-12);playPoint();} });
+  pipes.forEach(p=>{ if(!p.scored&&p.lx+PW<bird.x){p.scored=true;gameScore++;if(gameScore>geti(LS.BEST))set(LS.BEST,gameScore);spawnParticles(bird.x,bird.y-12);playPoint();if(navigator.vibrate)navigator.vibrate(15);} });
   trailTimer+=dt; if(trailTimer>=1.8){emitTrail(bird.x,bird.y);trailTimer=0;}
   updateTrail(dt); tickParticles(dt);
   if(collides()){gState='dead';setTimeout(openGameover,550);}
